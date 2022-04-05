@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using SeleniumExtras.WaitHelpers;
+using OpenQA.Selenium.Firefox;
 
 namespace AmazonExercise
 {
@@ -83,13 +84,10 @@ namespace AmazonExercise
 
         public static void ChooseSize()
         {
-            WebDriverWait wait = new WebDriverWait(Driver.driver, TimeSpan.FromSeconds(20));
             ProductPage productPage = new ProductPage();
 
             ProductPage productsPage = new ProductPage();
-            wait.Until(ExpectedConditions.ElementToBeClickable(productPage.SelectSizeButton));
             productsPage.SelectSizeButton.Click();
-            wait.Until(ExpectedConditions.ElementToBeClickable(productPage.AddToCartButton));
             productsPage.SelectSizeNumber.Click();
         }
 

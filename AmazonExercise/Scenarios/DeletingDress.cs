@@ -38,7 +38,7 @@ namespace AmazonExercise.Scenarios
         {
             Driver.driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(30);
             Driver.driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(30);
-            //WebDriverWait wait = new WebDriverWait(Driver.driver, TimeSpan.FromSeconds(20));
+            WebDriverWait wait = new WebDriverWait(Driver.driver, TimeSpan.FromSeconds(20));
 
 
             CartPage cartPage = new CartPage();
@@ -50,6 +50,7 @@ namespace AmazonExercise.Scenarios
             Actions.ClickSearchButton();
             Actions.ClickOnDressOne();
             Actions.ChooseSize();
+            Thread.Sleep(4000);
             Actions.ClickOnAddToCartButton();
 
 
@@ -60,10 +61,10 @@ namespace AmazonExercise.Scenarios
             Actions.FillTheSearch("dresses");
             Actions.ClickSearchButton();
             Actions.ClickOnDressTwo();
-            //wait.Until(ExpectedConditions.ElementToBeClickable(productPage.SelectSizeButton));
             Actions.ChooseSize();
             //wait.Until(ExpectedConditions.ElementToBeClickable(productPage.AddToCartButton));
             //wait.Until(ExpectedConditions.ElementIsVisible((By)productPage.ByNowButton));
+            Thread.Sleep(4000);
             Actions.ClickOnAddToCartButton();
 
             Assert.AreEqual(cartPage.AddedToCart.Text, "Added to Cart");

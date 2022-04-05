@@ -1,5 +1,7 @@
 ﻿using AmazonExercise.Pages;
 using NUnit.Framework;
+using OpenQA.Selenium.Support.UI;
+using SeleniumExtras.WaitHelpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,8 +35,10 @@ namespace AmazonExercise
         public void SearchForDresses()
         {
             Driver.driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(30);
+            WebDriverWait wait = new WebDriverWait(Driver.driver, TimeSpan.FromSeconds(20));
 
             CartPage cartPage = new CartPage();
+            ProductPage productPage = new ProductPage();
 
             NavigateTo.Homepage();
             NavigateTo.Search();
@@ -42,7 +46,9 @@ namespace AmazonExercise
             Actions.ClickSearchButton();
             Actions.ClickOnFilters();
             Actions.ClickOnDressOne();
-            Actions.ChooseSize();   
+            Actions.ChooseSize();
+            Thread.Sleep(4000);
+            //wait.Until(ExpectedConditions.ElementToBeClickable(productPage.AddToCartButton));
             Actions.ClickOnAddToCartButton();
 
             Assert.AreEqual(cartPage.AddedToCart.Text, "Added to Cart");
@@ -54,6 +60,8 @@ namespace AmazonExercise
             Actions.ClickOnFilters();
             Actions.ClickOnDressTwo();
             Actions.ChooseSize();
+            //wait.Until(ExpectedConditions.ElementToBeClickable(productPage.AddToCartButton));
+            Thread.Sleep(4000);
             Actions.ClickOnAddToCartButton();
 
             Assert.AreEqual(cartPage.AddedToCart.Text, "Added to Cart");
