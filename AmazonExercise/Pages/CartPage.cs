@@ -23,7 +23,7 @@ namespace AmazonExercise.Pages
         public IWebElement AddedToCart { get; set; }
 
 
-        [FindsBy(How = How.Name, Using = "submit.delete.Ca3c1130f-1d60-44a6-8193-0cd29e1bc023")]
+        [FindsBy(How = How.CssSelector, Using = "#sc-item-C0a88d343-29b2-47d3-bec1-bd15555f494a > div.sc-list-item-content > div > div.a-column.a-span10 > div > div > div.a-fixed-left-grid-col.a-col-right > div.a-row.sc-action-links > span.a-size-small.sc-action-delete")]
         public IWebElement DeleteItem { get; set; }
     }
 }
